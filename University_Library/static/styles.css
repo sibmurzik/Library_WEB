@@ -1,0 +1,15 @@
+
+h1 {color: blue;}
+h2 {color: green;}
+html {
+  font-size: 150%;
+}
+nav {font-size: 150%;}
+
+th {background-color:rgb(22, 22, 114); color: gold; text-align: center;}
+
+table, td, tr {box-shadow: -6px 12px 12px -6px rgb(95,8, 55);
+padding: 20px; text-align: center;}
+
+h2, td, h4{color: black;}
+button {font:size :150%}

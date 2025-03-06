@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Library{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+</head>
+<body>
+    <header>
+        <h1>Library</h1>
+    </header>
+
+    <nav>
+        <ul>
+            <li><a href="{% url 'book-list' %}">Books List</a></li>
+            <li><a href="{% url 'book-new' %}">New book</a></li>
+            <li><a href="{% url 'student-list' %}">Students list</a></li>
+            <li><a href="{% url 'student-new' %}">New student</a></li>
+
+        </ul>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+
+</body>
+</html>

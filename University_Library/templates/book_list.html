@@ -1,0 +1,39 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Book list {% endblock %}
+
+{% block content %}
+<table>
+    <thead>
+            <tr>
+                <th>Edit</th>
+                <th>Book ID</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Edition</th>
+                <th>Pages</th>
+                <th>Total Quantity</th>
+                <th> Available quantity</th>
+                <th>Delete</th>
+            </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+        <tr>
+            <th><button ><a href="{% url 'book-detail' pk=book.id %}" class="button">Edit</a></button></th>
+            <td>{{book.id}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.edition_number}}</td>
+             <td>{{book.number_pages}}</td>
+            <td>{{book.books_in_stock}}</td>
+            <td>{{book.availible_books}}</td>
+            <th><button ><a href="{% url 'bookdelete-view' pk=book.id %}" class="button">Delete</a></button></th>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

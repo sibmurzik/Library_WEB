@@ -18,14 +18,25 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework.routers import SimpleRouter
 
-from library.views import StudentViewSet, BookViewDetail
-
-router = SimpleRouter()
-router.register(r'book', BookViewDetail)
-router.register(r'student', StudentViewSet)
+from library.views import BookDetail, BookList, home, BookCreate, book_delete, StudentsList, StudentDetail, \
+    StudentCreate, student_delete, OnHandBook, GiveBook, ReaderBookRelationCreate, book_return
 
 urlpatterns = [
-    path('admin/', admin.site.urls)
+    path('admin/', admin.site.urls),
+    path('', home),
+    path('book/<int:pk>/', BookDetail.as_view(), name = 'book-detail'),
+    path('book/new/', BookCreate.as_view(), name = 'book-new'),
+    path('book/', BookList.as_view(), name = 'book-list'),
+    path(r'^book_delete/<int:pk>', book_delete, name='bookdelete-view'),
+
+    path('student/', StudentsList.as_view(), name = 'student-list'),
+    path('student/<int:pk>/', StudentDetail.as_view(), name = 'student-detail'),
+    path('student/new/', StudentCreate.as_view(), name = 'student-new'),
+    path(r'^student_delete/<int:pk>', student_delete, name='student_delete-view'),
+    path(r'^student_book_on_hand/<int:pk>', OnHandBook.as_view(), name='book_onHand-view'),
+    path(r'^student_givebook/<int:pk>', GiveBook.as_view(), name='givebook-view'),
+    path('relation/<int:book_id>/<int:reader_id>/', ReaderBookRelationCreate.as_view(), name = 'relation-create'),
+    path('book_return/<int:pk> ', book_return , name = 'book-return'),
+
 ]
 
-urlpatterns += router.urls

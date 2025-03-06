@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load rest_framework %}
+{% block title %} Book given form {% endblock %}
+{% block content %}
+    <h2> Giving book - {{ relation.book.name }} to student {{relation.reader.first_name}} {{relation.reader.last_name}}   </h2>
+    <form action="{% url 'relation-create' pk=relation.pk %}" method="POST">
+        {% csrf_token %}
+        {% render_form serializer %}
+        <input type="submit" value="Give Book">
+    </form>
+
+{% endblock %}
+

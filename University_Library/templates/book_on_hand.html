@@ -1,0 +1,35 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Book list {% endblock %}
+
+{% block content %}
+<table>
+    <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Edition</th>
+                <th>Received date</th>
+                <th>Date to be returned</th>
+                <th>Returned</th>
+            </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+        <tr>
+            <td>{{book.book.id}}</td>
+            <td>{{book.book.name}}</td>
+            <td>{{book.book.author}}</td>
+            <td>{{book.book.edition_number}}</td>
+            <td>{{book.receiving_date}}</td>
+            <td>{{book.return_deadline}}</td>
+            <th><button ><a href="{% url 'book-return' pk=book.id %}" class="button">Return Book</a></button></th>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

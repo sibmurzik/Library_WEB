@@ -3,7 +3,7 @@ from symtable import Class
 from django.contrib import admin
 from django.contrib.admin import ModelAdmin
 
-from library.models import Book, Student
+from library.models import Book, Student, StudentBookRelation
 
 
 # Register your models here.
@@ -14,4 +14,11 @@ class BookAdmin(ModelAdmin):
 @admin.register(Student)
 class StudentAdmin(ModelAdmin):
     pass
+
+@admin.register(StudentBookRelation)
+class StudentBookAdmim(ModelAdmin):
+    pass
+
+
+
 

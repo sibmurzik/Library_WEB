@@ -1,0 +1,32 @@
+
+{% extends 'base.html' %}
+
+{% block title %} Book list {% endblock %}
+
+{% block content %}
+<h3> Student {{reader.first_name}} {{reader.last_name}}  </h3>
+<table>
+    <thead>
+            <tr>
+                <th>Book ID</th>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Edition</th>
+                <th>Give book</th>
+            </tr>
+    </thead>
+    <tbody>
+    {% for book in books %}
+        <tr>
+            <td>{{book.id}}</td>
+            <td>{{book.name}}</td>
+            <td>{{book.author}}</td>
+            <td>{{book.edition_number}}</td>
+            <th><button ><a href="{% url 'relation-create' book_id=book.id reader_id=reader.id %}" class="button">Give Book</a></button></th>
+
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% load rest_framework %}
+{% block title %}Student detail{% endblock %}
+{% block content %}
+    <h2> Book - {{ student.name }} id : {{student.id}} </h2>
+    <form action="{% url 'student-detail' pk=student.pk %}" method="POST">
+        {% csrf_token %}
+        {% render_form serializer %}
+        <input type="submit" value="Save">
+    </form>
+
+{% endblock %}
+
